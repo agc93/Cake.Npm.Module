@@ -13,20 +13,6 @@ namespace Cake.Npm.Module.Tests
     {
         public sealed class TheConstructor
         {
-            [Fact]
-            public void Should_Throw_If_Environment_Is_Null()
-            {
-                // Given
-                var fixture = new NpmPackageInstallerFixture();
-                fixture.Environment = null;
-
-                // When
-                var result = Record.Exception(() => fixture.CreateInstaller());
-
-                // Then
-                Assert.IsType<ArgumentNullException>(result);
-                Assert.Equal("environment", ((ArgumentNullException)result).ParamName);
-            }
 
             [Fact]
             public void Should_Throw_If_Process_Runner_Is_Null()

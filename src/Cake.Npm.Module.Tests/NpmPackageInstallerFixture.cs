@@ -1,7 +1,6 @@
 using Cake.Core;
 using Cake.Core.Diagnostics;
 using Cake.Core.IO;
-using Cake.Npm.Module;
 using Cake.Core.Packaging;
 using Cake.Core.Configuration;
 using Cake.Testing;
@@ -25,7 +24,7 @@ namespace Cake.Npm.Module.Tests
         public PackageType PackageType { get; set; }
         public DirectoryPath InstallPath { get; set; }
 
-        public ICakeConfiguration Config { get; set; }
+        public ICakeConfiguration Config { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="NpmPackageInstallerFixture"/> class.
@@ -49,7 +48,7 @@ namespace Cake.Npm.Module.Tests
         /// <returns>The Npm package installer.</returns>
         internal NpmPackageInstaller CreateInstaller()
         {
-            return new NpmPackageInstaller(Environment, ProcessRunner, Log, ContentResolver, Config);
+            return new NpmPackageInstaller(ProcessRunner, Log, ContentResolver, Config);
         }
 
         /// <summary>

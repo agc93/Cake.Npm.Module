@@ -1,6 +1,6 @@
 #tool "nuget:?package=GitVersion.CommandLine"
 #load "helpers.cake"
-#tool nuget:?package=DocFx.Console
+#tool nuget:?package=docfx.console&version=2.18.5
 #addin nuget:?package=Cake.DocFx
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -107,6 +107,7 @@ Task("Run-Unit-Tests")
 });
 
 Task("Generate-Docs").Does(() => {
+	DocFxMetadata("./docfx/docfx.json");
 	DocFxBuild("./docfx/docfx.json");
 	Zip("./docfx/_site/", artifacts + "/docfx.zip");
 });
